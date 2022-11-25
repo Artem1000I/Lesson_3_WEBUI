@@ -2,6 +2,7 @@ package HomeWork_3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -41,7 +42,7 @@ public class Main {
         WebElement signIn2 = driver.findElement(By.id("passp:sign-in"));
         signIn2.click();
         try {
-            Thread.sleep(5000); //заснуть на 10 секунд
+            Thread.sleep(3000); //заснуть на 10 секунд
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -49,11 +50,12 @@ public class Main {
         //Открыли карту
         WebElement maps =driver.findElement(By.xpath(".//div[text()='Показать на карте']"));
         maps.click();
+
         //Смотрим осадки
         WebElement rainfall = driver.findElement(By.xpath(".//input[@value='nowcast']"));
         rainfall.click();
         try {
-            Thread.sleep(5000); //заснуть на 10 секунд
+            Thread.sleep(3000); //заснуть на 10 секунд
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -61,7 +63,7 @@ public class Main {
         WebElement nowcast = driver.findElement(By.xpath(".//input[@value='snow']"));
         nowcast.click();
         try {
-            Thread.sleep(5000); //заснуть на 10 секунд
+            Thread.sleep(3000); //заснуть на 10 секунд
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -69,7 +71,7 @@ public class Main {
         WebElement temperature = driver.findElement(By.xpath(".//input[@value='temperature']")); //.//label/span/a/span/span
         temperature.click();
         try {
-            Thread.sleep(5000); //заснуть на 10 секунд
+            Thread.sleep(3000); //заснуть на 10 секунд
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -77,7 +79,7 @@ public class Main {
         WebElement wind = driver.findElement(By.xpath(".//input[@value='wind']"));
         wind.click();
         try {
-            Thread.sleep(5000); //заснуть на 10 секунд
+            Thread.sleep(3000); //заснуть на 10 секунд
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -102,6 +104,20 @@ public class Main {
 
         driver.navigate().back();
 
+        //Поиск города
+        WebElement search= driver.findElement(By.cssSelector(".mini-suggest__input"));
+        search.click();
+        search.sendKeys("Мурманск");
+        search.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(3000); //заснуть на 10 секунд
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+
+
+        //Завершаем работу с ресурсом
+        driver.quit();
     }
 }
